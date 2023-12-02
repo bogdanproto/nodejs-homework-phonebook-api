@@ -1,5 +1,5 @@
 const pathUsers = {
-  ROOT: "/api/users",
+  ROOT: "/users",
   USERS: "/",
   REGISTER: "/register",
   LOGIN: "/login",

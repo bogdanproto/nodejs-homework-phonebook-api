@@ -6,10 +6,12 @@ const { PRIVATE_KEY_TEMP } = require("../tempConf");
 
 const authenticate = async (req, res, next) => {
   const { authorization } = req.headers;
-  const [barer, token] = authorization?.split(" ") ?? [];
 
-  if (!barer) {
+  const [bearer, token] = authorization?.split(" ") ?? [];
+
+  if (bearer !== "Bearer" || !token) {
     next(HttpError(status.USER_UNAUTHORIZEDTOKEN));
+    return;
   }
 
   try {
