@@ -7,6 +7,7 @@ const status = {
   BAD_ID: { status: 400, message: "Id is not valid" },
   BAD_PARAMS: { status: 400, message: "Params is wrong or has wrong type" },
   NOT_FOUND: { status: 404, message: "Not Found" },
+  UNSUPPORTED_TYPE: { status: 415, message: "Unsupported Media Type" },
 
   USER_LOGIN: { status: 200, message: "User is logged in" },
   USER_CURRENT: { status: 200, message: "User is authorized" },

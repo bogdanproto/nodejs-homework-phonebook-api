@@ -1,4 +1,5 @@
 const check = require("validator");
+const gravatar = require("gravatar");
 const { Schema } = require("mongoose");
 const { subscription } = require("../../consts");
 
@@ -23,6 +24,17 @@ const mongooseUserShema = new Schema(
       type: String,
       enum: subscription,
       default: "starter",
+    },
+    avatarURL: {
+      type: String,
+      required: true,
+      default: function () {
+        return gravatar.url(this.email);
+      },
+    },
+    avatarCloudURL: {
+      type: String,
+      default: null,
     },
     token: {
       type: String,
