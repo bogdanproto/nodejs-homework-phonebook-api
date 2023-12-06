@@ -1,4 +1,13 @@
 const mongooseUserShema = require("./mongooseUsers");
-const { joiUsersSchema, joiUsersSchemaSubscr } = require("./joiUsers");
+const {
+  joiUsersSchema,
+  joiUsersSchemaSubscr,
+  joiUsersSchemaVerify,
+} = require("./joiUsers");
 
-module.exports = { mongooseUserShema, joiUsersSchema, joiUsersSchemaSubscr };
+module.exports = {
+  mongooseUserShema,
+  joiUsersSchema,
+  joiUsersSchemaSubscr,
+  joiUsersSchemaVerify,
+};

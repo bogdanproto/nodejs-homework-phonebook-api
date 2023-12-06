@@ -13,7 +13,14 @@ const status = {
   USER_CURRENT: { status: 200, message: "User is authorized" },
   USER_LOGOUT: { status: 200, message: "User is logged out" },
   USER_UPDATE: { status: 200, message: "Updated success" },
+  USER_VERIFY: { status: 200, message: "Verification successful" },
+  USER_RE_VERIFY: { status: 200, message: "Verification email sent" },
+  USER_VERIFY_ALREADY: {
+    status: 400,
+    message: "Verification has already been passed",
+  },
   USER_UNAUTHORIZED: { status: 401, message: "Email or password is wrong" },
+  USER_UNVERIFY: { status: 401, message: "User is not verify by email" },
   USER_UNAUTHORIZEDTOKEN: {
     status: 401,
     message: "User is not authorized",
