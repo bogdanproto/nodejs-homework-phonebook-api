@@ -3,4 +3,21 @@ const DB_CONNECT_TEMP =
 
 const PRIVATE_KEY_TEMP = "\\www///";
 
-module.exports = { DB_CONNECT_TEMP, PRIVATE_KEY_TEMP };
+const CLOUDINARY_KEY = {
+  cloud_name: "dcwqo29q0",
+  api_key: "167858416332764",
+  api_secret: "UYw1ao04b4ieW9E7sD_vWJgEoI8",
+};
+
+const DIR_TEMP = "temp";
+const DIR_STATIC = "public";
+const DIR_AVATARS = "avatars";
+
+module.exports = {
+  DB_CONNECT_TEMP,
+  PRIVATE_KEY_TEMP,
+  CLOUDINARY_KEY,
+  DIR_TEMP,
+  DIR_STATIC,
+  DIR_AVATARS,
+};

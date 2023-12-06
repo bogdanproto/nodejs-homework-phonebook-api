@@ -5,6 +5,7 @@ const pathUsers = {
   LOGIN: "/login",
   LOGOUT: "/logout",
   CURRENT: "/current",
+  AVATAR: "/avatars",
 };
 
 Object.freeze(pathUsers);
