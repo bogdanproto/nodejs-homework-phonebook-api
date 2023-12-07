@@ -10,6 +10,7 @@ const handleMulterErr = require("./handleMulterErr");
 const handleLibraresError = require("./handleLibraresError");
 const handleAvatarFile = require("./handleAvatarFile");
 const uploadAvatarToCloud = require("./uploadAvatarToCloud");
+const sendVerifyEmail = require("./sendVerifyEmail");
 
 module.exports = {
   HttpError,
@@ -24,4 +25,5 @@ module.exports = {
   checkBoolean,
   createFilter,
   uploadAvatarToCloud,
+  sendVerifyEmail,
 };

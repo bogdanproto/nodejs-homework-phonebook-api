@@ -15,6 +15,10 @@ const login = async (req, res) => {
     throw HttpError(status.USER_UNAUTHORIZED);
   }
 
+  if (!user.verify) {
+    throw HttpError(status.USER_UNVERIFY);
+  }
+
   const isPassCorrect = await bcrypt.compare(password, user.password);
 
   if (!isPassCorrect) {

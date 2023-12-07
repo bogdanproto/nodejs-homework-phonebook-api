@@ -24,4 +24,16 @@ const joiUsersSchemaSubscr = Joi.object({
     .required(),
 });
 
-module.exports = { joiUsersSchema, joiUsersSchemaSubscr };
+const joiUsersSchemaVerify = Joi.object({
+  email: Joi.string()
+    .email({
+      minDomainSegments: 2,
+    })
+    .required()
+    .messages({
+      "any.required": "Missing required field email",
+      "string.empty": "Email is not allowed to be empty",
+    }),
+});
+
+module.exports = { joiUsersSchema, joiUsersSchemaSubscr, joiUsersSchemaVerify };

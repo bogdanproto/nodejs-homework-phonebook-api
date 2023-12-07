@@ -1,9 +1,9 @@
 const bcrypt = require("bcryptjs");
+const { nanoid } = require("nanoid");
 
 const { User } = require("../../models");
-const { decoratorCtrl } = require("../../helpers");
+const { decoratorCtrl, HttpError, sendVerifyEmail } = require("../../helpers");
 const { status } = require("../../consts");
-const { HttpError } = require("../../helpers");
 
 const register = async (req, res) => {
   const { email, password } = req.body;
@@ -13,9 +13,16 @@ const register = async (req, res) => {
     throw HttpError(status.USER_CONFLICT);
   }
 
+  const verificationToken = nanoid();
   const hashPass = await bcrypt.hash(password, 10);
 
-  const newUser = await User.create({ email, password: hashPass });
+  const newUser = await User.create({
+    email,
+    password: hashPass,
+    verificationToken,
+  });
+
+  await sendVerifyEmail(newUser);
 
   res.status(status.CREATED.status).json({
     ...status.CREATED,
@@ -23,6 +30,7 @@ const register = async (req, res) => {
       email: newUser.email,
       subscription: newUser.subscription,
       avatarURL: newUser.avatarURL,
+      verify: newUser.verify,
     },
   });
 };
