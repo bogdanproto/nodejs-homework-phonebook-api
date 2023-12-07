@@ -1,11 +1,10 @@
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
-const { User } = require("../../models");
-const { decoratorCtrl } = require("../../helpers");
-const { status } = require("../../consts");
-const { HttpError } = require("../../helpers");
-const { PRIVATE_KEY_TEMP } = require("../../tempConf");
+const { User } = require('../../models');
+const { decoratorCtrl, HttpError } = require('../../helpers');
+const { status } = require('../../consts');
 
 const login = async (req, res) => {
   const { email, password } = req.body;
@@ -25,10 +24,10 @@ const login = async (req, res) => {
     throw HttpError(status.USER_UNAUTHORIZED);
   }
 
-  // const { PRIVATE_KEY } = process.env;
+  const { PRIVATE_KEY } = process.env;
   const { _id } = user;
 
-  const token = jwt.sign({ _id }, PRIVATE_KEY_TEMP, { expiresIn: "12h" });
+  const token = jwt.sign({ _id }, PRIVATE_KEY, { expiresIn: '12h' });
 
   await User.updateOne({ _id }, { token });
 

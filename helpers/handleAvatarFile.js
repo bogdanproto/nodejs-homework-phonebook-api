@@ -1,19 +1,17 @@
-const Jimp = require("jimp");
-const path = require("path");
-const fs = require("fs/promises");
-// require("dotenv").config();
-
-const { DIR_STATIC, DIR_AVATARS } = require("../tempConf");
+const Jimp = require('jimp');
+const path = require('path');
+const fs = require('fs/promises');
+require('dotenv').config();
 
 const handleAvatarFile = async (objId, file) => {
-  // const { DIR_STATIC, DIR_AVATARS } = process.env;
+  const { DIR_STATIC, DIR_AVATARS } = process.env;
   const { path: tempPath, originalname } = file;
 
   const id = objId.toString();
 
   const arr = [...originalname];
-  const idxExtension = arr.lastIndexOf(".");
-  const extensionFile = arr.splice(idxExtension, arr.length - 1).join("");
+  const idxExtension = arr.lastIndexOf('.');
+  const extensionFile = arr.splice(idxExtension, arr.length - 1).join('');
 
   const fileName = `${id}${extensionFile}`;
 
